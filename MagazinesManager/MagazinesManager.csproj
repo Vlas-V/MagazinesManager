@@ -44,12 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Article.cs" />
-    <Compile Include="Commands.cs" />
-    <Compile Include="ExitCommand.cs" />
     <Compile Include="Frequency.cs" />
-    <Compile Include="ICommand.cs" />
     <Compile Include="Magazine.cs" />
-    <Compile Include="Parser.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
