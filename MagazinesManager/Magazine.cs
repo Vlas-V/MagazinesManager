@@ -5,16 +5,14 @@ using System.Text;
 
 namespace MagazinesManager
 {
-    public class Magazine
+    public class Magazine : Edition, IRateAndCopy
     {
         private string name;
         private Frequency frequency;
-        private DateTime publicationDate;
-        private int circulation;
         private Article[] articlesList;
 
         // Single constructor using optional parameters
-        public Magazine(string name = "", 
+        public Magazine(string name = "",
                         Frequency frequency = 0,
                         DateTime publicationDate = new DateTime(),
                         int circulation = 0)
@@ -72,7 +70,7 @@ namespace MagazinesManager
                 articlesList = value;
             }
         }
-        
+
         public double AverageRate
         {
             get
@@ -83,11 +81,13 @@ namespace MagazinesManager
                 double sum = 0;
 
                 foreach (Article article in ArticlesList)
-                    sum += article.Rate;
-    
+                    sum += article.Rating;
+
                 return sum / ArticlesList.Length;
             }
         }
+
+        double IRateAndCopy.Rating => throw new NotImplementedException();
 
         public void AddArticles(params Article[] articles)
         {
@@ -99,7 +99,7 @@ namespace MagazinesManager
             {
                 ArticlesList = ArticlesList.Concat(articles).ToArray();
             }
-           
+
         }
 
         public override string ToString()
@@ -111,14 +111,14 @@ namespace MagazinesManager
             info += "Circulation:           " + Circulation + "\n";
             info += "ARTICLES\n\n";
             info += "Average rating:        " + AverageRate + "\n";
-            info += "Number of articles:    " + (ArticlesList?.Length ?? 0) + "\n\n";   
+            info += "Number of articles:    " + (ArticlesList?.Length ?? 0) + "\n\n";
 
             if (ArticlesList != null)
             {
                 foreach (Article article in ArticlesList)
                     info += article.ToString() + "\n\n";
             }
-            
+
 
             return info;
         }
@@ -133,6 +133,11 @@ namespace MagazinesManager
             info += "Average rating:        " + AverageRate + "\n";
 
             return info;
+        }
+
+        object IRateAndCopy.DeepCopy()
+        {
+            throw new NotImplementedException();
         }
     }
 }

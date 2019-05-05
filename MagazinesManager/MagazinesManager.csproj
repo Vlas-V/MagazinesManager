@@ -44,7 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Article.cs" />
+    <Compile Include="Edition.cs" />
     <Compile Include="Frequency.cs" />
+    <Compile Include="IRateAndCopy.cs" />
     <Compile Include="Magazine.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />

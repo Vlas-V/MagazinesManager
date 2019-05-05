@@ -1,28 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="MagazinesManager.Person" Collapsed="true">
-    <Position X="1.75" Y="2.75" Width="1.5" />
+    <Position X="5.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAABAAAAAAEhAAEAAQABAAEAIAAAAAIAAAAAiA=</HashCode>
+      <HashCode>AAAAAAAABAAAAAAEhAAEAAQABAAMAIAAAAAIAAAAAiA=</HashCode>
       <FileName>Person.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MagazinesManager.Article" Collapsed="true">
-    <Position X="1.75" Y="1.25" Width="1.5" />
+    <Position X="3.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAAAAAAAAAAAAAAEgAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAEgAAAAAQIAAAAAAEAAAAAAAAAAAA=</HashCode>
       <FileName>Article.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="MagazinesManager.Magazine" Collapsed="true">
-    <Position X="1.75" Y="0.5" Width="1.5" />
+    <Position X="1.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAAAQAAAAEIAAAACUAAIAEAACAAAAIAQACAAA=</HashCode>
+      <HashCode>AAIAAAAAAAQAAAAEIAAAACUIAIAEAACAAAAIAQAAAAA=</HashCode>
       <FileName>Magazine.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.325" />
   </Class>
+  <Class Name="MagazinesManager.Edition" Collapsed="true">
+    <Position X="1.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAEAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Edition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="MagazinesManager.IRateAndCopy" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>IRateAndCopy.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Enum Name="MagazinesManager.Frequency" Collapsed="true">
-    <Position X="1.75" Y="3.5" Width="1.5" />
+    <Position X="4" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAgA=</HashCode>
       <FileName>Frequency.cs</FileName>

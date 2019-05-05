@@ -5,18 +5,19 @@ using System.Text;
 
 namespace MagazinesManager
 {
-    public class Article
+    public class Article : IRateAndCopy
     {
         public Person Author { get; set; }
         public string Name { get; set; }
-        public double Rate { get; set; }
+        public double Rating { get; set; }
 
+        double IRateAndCopy.Rating => throw new NotImplementedException();
 
-        public Article(Person author = null, string name = "", double rate = 0)
+        public Article(Person author = null, string name = "", double rating = 0)
         {
             Author = author ?? new Person();
             Name = name;
-            Rate = rate;
+            Rating = rating;
         }
 
         public override string ToString()
@@ -24,8 +25,13 @@ namespace MagazinesManager
             string info = "";
             info += "Author:          " + Author.ToShortString() + "\n";
             info += "Article's name:  " + Name + "\n";
-            info += "Rating:          " + Rate;
+            info += "Rating:          " + Rating;
             return info;
+        }
+
+        object IRateAndCopy.DeepCopy()
+        {
+            throw new NotImplementedException();
         }
     }
 }
