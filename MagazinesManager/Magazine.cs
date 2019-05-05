@@ -135,9 +135,12 @@ namespace MagazinesManager
             return info;
         }
 
-        object IRateAndCopy.DeepCopy()
+        public object DeepCopy()
         {
-            throw new NotImplementedException();
+            Magazine copy =  new Magazine(this.Name, this.Frequency, this.PublicationDate, this.Circulation);
+            copy.AddArticles(this.ArticlesList);
+
+            return copy;
         }
     }
 }

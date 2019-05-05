@@ -9,15 +9,15 @@ namespace MagazinesManager
     {
         public Person Author { get; set; }
         public string Name { get; set; }
-        public double Rating { get; set; }
+        public double Rate { get; set; }
 
-        double IRateAndCopy.Rating => throw new NotImplementedException();
+        public double Rating => Rate;
 
         public Article(Person author = null, string name = "", double rating = 0)
         {
             Author = author ?? new Person();
             Name = name;
-            Rating = rating;
+            Rate = rating;
         }
 
         public override string ToString()
@@ -25,13 +25,13 @@ namespace MagazinesManager
             string info = "";
             info += "Author:          " + Author.ToShortString() + "\n";
             info += "Article's name:  " + Name + "\n";
-            info += "Rating:          " + Rating;
+            info += "Rate:          " + Rate;
             return info;
         }
 
-        object IRateAndCopy.DeepCopy()
+        public object DeepCopy()
         {
-            throw new NotImplementedException();
+            return new Article (this.Author, this.Name, this.Rate);
         }
     }
 }
