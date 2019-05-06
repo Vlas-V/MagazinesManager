@@ -11,10 +11,9 @@ namespace MagazinesManager
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            Article article = new Article();
-
-            object article1 = article.DeepCopy();
-
+            Magazine m1 = new Magazine();
+            string temp = m1.EditionName;
+            
         }
     }
 }

@@ -56,9 +56,9 @@ namespace MagazinesManager
 
         public override string ToString()
         {
-            return   $"Edition Name: {EditionName};" +
-                     $" Publication Date: {PublicationDate}; " +
-                     $"Circulation: {Circulation}";
+            return   $"[Edition Name: {EditionName};\n" +
+                     $"Publication Date: {PublicationDate}\n; " +
+                     $"Circulation: {Circulation}]";
         }
 
         public override int GetHashCode() => this.ToString().GetHashCode();

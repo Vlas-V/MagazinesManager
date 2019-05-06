@@ -7,32 +7,19 @@ namespace MagazinesManager
 {
     public class Magazine : Edition, IRateAndCopy
     {
-        private string name;
         private Frequency frequency;
-        private Article[] articlesList;
+        private List<Person> editors = new List<Person>();
+        private List<Article> articles = new List<Article>();
+
 
         // Single constructor using optional parameters
-        public Magazine(string name = "",
-                        Frequency frequency = 0,
+        public Magazine(string editionName = "",
                         DateTime publicationDate = new DateTime(),
-                        int circulation = 0)
+                        int circulation = 0,
+                        Frequency frequency = 0)
+            : base(editionName, publicationDate, circulation)
         {
-            Name = name;
             Frequency = frequency;
-            PublicationDate = publicationDate;
-            Circulation = circulation;
-
-            // Other default values
-            ArticlesList = null;
-        }
-
-        public string Name
-        {
-            get => name;
-            set
-            {
-                name = value;
-            }
         }
 
         public Frequency Frequency
@@ -44,30 +31,21 @@ namespace MagazinesManager
             }
         }
 
-        public DateTime PublicationDate
+        public List<Person> Editors
         {
-            get => publicationDate;
+            get => editors;
             set
             {
-                publicationDate = value;
+                 editors = value;
             }
         }
 
-        public int Circulation
+        public List<Article> Articles
         {
-            get => circulation;
+            get => articles;
             set
             {
-                circulation = value;
-            }
-        }
-
-        public Article[] ArticlesList
-        {
-            get => articlesList;
-            set
-            {
-                articlesList = value;
+                articles = value;
             }
         }
 
@@ -75,70 +53,76 @@ namespace MagazinesManager
         {
             get
             {
-                if (ArticlesList == null)
+                if (Articles?.Any() != true)
                     return 0;
 
                 double sum = 0;
 
-                foreach (Article article in ArticlesList)
+                foreach (Article article in Articles)
                     sum += article.Rating;
 
-                return sum / ArticlesList.Length;
+                return sum / Articles.Count;
             }
         }
 
-        double IRateAndCopy.Rating => throw new NotImplementedException();
+        public Edition Edition
+        {
+            get => (Edition)this;
+            set
+            {
+                this.EditionName = value.EditionName;
+                this.PublicationDate = value.PublicationDate;
+                this.Circulation = value.Circulation;
+            }
+
+        }
+
+        double IRateAndCopy.Rating => AverageRate;
+
+        public void AddEditors(params Person[] editors)
+        {
+            Editors.AddRange(editors);
+        }
 
         public void AddArticles(params Article[] articles)
         {
-            if (ArticlesList == null)
-            {
-                ArticlesList = articles;
-            }
-            else
-            {
-                ArticlesList = ArticlesList.Concat(articles).ToArray();
-            }
-
-        }
-
-        public override string ToString()
-        {
-            string info = "";
-            info += "Magazine's name:       " + Name + "\n";
-            info += "Production frequency:  " + Frequency + "\n";
-            info += "Publication date:      " + PublicationDate + "\n";
-            info += "Circulation:           " + Circulation + "\n";
-            info += "ARTICLES\n\n";
-            info += "Average rating:        " + AverageRate + "\n";
-            info += "Number of articles:    " + (ArticlesList?.Length ?? 0) + "\n\n";
-
-            if (ArticlesList != null)
-            {
-                foreach (Article article in ArticlesList)
-                    info += article.ToString() + "\n\n";
-            }
-
-
-            return info;
+            Articles.AddRange(articles);
         }
 
         public string ToShortString()
         {
-            string info = "";
-            info += "Magazine's name:       " + Name + "\n";
-            info += "Production frequency:  " + Frequency + "\n";
-            info += "Publication date:      " + PublicationDate + "\n";
-            info += "Circulation:           " + Circulation + "\n";
-            info += "Average rating:        " + AverageRate + "\n";
-
-            return info;
+            return  base.ToString().TrimEnd(']') + '\n' +
+                    $"Production frequency: {Frequency}]";
         }
 
-        public object DeepCopy()
+        public override string ToString()
         {
-            Magazine copy =  new Magazine(this.Name, this.Frequency, this.PublicationDate, this.Circulation);
-            copy.AddArticles(this.ArticlesList);
+
+            StringBuilder data = new StringBuilder(512);
+
+            data.AppendLine(ToShortString().TrimEnd(']'));
+
+            data.AppendLine("Editors: ");
+            foreach (Person p in Editors)
+            {
+                data.AppendLine(p.ToShortString() + ',');
+            }
+
+            data.AppendLine("Articles: ");
+            foreach (Article a in Articles)
+            {
+                data.AppendLine(a.Name + ',');
+            }
+
+            return data.ToString().TrimEnd(',') + ']';
+        }
+
+
+        public override object DeepCopy()
+        {
+            Magazine copy =  new Magazine(this.EditionName, this.PublicationDate, this.Circulation, this.Frequency);
+            copy.AddEditors(this.Editors.ToArray());
+            copy.AddArticles(this.Articles.ToArray());
 
             return copy;
         }
