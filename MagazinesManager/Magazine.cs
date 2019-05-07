@@ -119,7 +119,7 @@ namespace MagazinesManager
                 data.AppendLine(a.Name + ',');
             }
 
-            return data.ToString().TrimEnd(',') + ']';
+            return data.ToString().TrimEnd(',') + ";\n]";
         }
 
 
@@ -183,8 +183,6 @@ namespace MagazinesManager
                 }
             }
         }
-        
-
     }
 }
 
