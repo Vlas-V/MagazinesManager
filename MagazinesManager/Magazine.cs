@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections;
 
 namespace MagazinesManager
 {
-    public class Magazine : Edition, IRateAndCopy
+    public class Magazine : Edition, IRateAndCopy, IEnumerable
     {
         private Frequency frequency;
         private List<Person> editors = new List<Person>();
@@ -138,5 +139,52 @@ namespace MagazinesManager
 
             return copy;
         }
+
+        // Iterators
+    
+
+
+        // Iterates over all of the articles
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return Articles.GetEnumerator();
+        }
+
+        // Iterates over Articles with rating higher provided value
+        public IEnumerable ArticlesHigher(double rating)
+        {
+            return actualImplementation();
+
+            IEnumerable actualImplementation()
+            {
+                foreach (Article a in Articles)
+                {
+                    if (a.Rating > rating)
+                    {
+                        yield return a;
+                    }
+                }
+            }
+        }
+
+        // Iterates over Articles with a provided keyword in their name
+        public IEnumerable ArticlesWith(string keyword)
+        {
+            return actualImplementation();
+
+            IEnumerable actualImplementation()
+            {
+                foreach (Article a in Articles)
+                {
+                    if (a.Name.Contains(keyword))
+                    {
+                        yield return a;
+                    }
+                }
+            }
+        }
+        
+
     }
 }
+

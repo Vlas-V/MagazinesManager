@@ -76,5 +76,7 @@ namespace MagazinesManager
         {
             return new Person(this.name, this.surname, this.birthdate);
         }
+
+
     }
 }
