@@ -10,10 +10,23 @@ namespace MagazinesManager
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Person p1 = new Person("hello", "world", new DateTime(2001, 01, 12));
+
+
             Magazine m1 = new Magazine();
-            string temp = m1.EditionName;
-            
+            Article a1 = new Article(p1, "Winter", 77);
+
+            m1.AddArticles(a1);
+
+            Console.WriteLine("Before chage:");
+            Console.WriteLine(m1.ToString());
+
+            // Changes in the article
+            a1.Rate = 22;
+
+            Console.WriteLine("After chage:");
+            Console.WriteLine(m1.ToString());
+
         }
     }
 }

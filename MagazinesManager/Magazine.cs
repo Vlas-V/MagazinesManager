@@ -91,14 +91,16 @@ namespace MagazinesManager
 
         public string ToShortString()
         {
-            return  base.ToString().TrimEnd(']') + '\n' +
-                    $"Production frequency: {Frequency}]";
+            return base.ToString().TrimEnd(']') + '\n' +
+                    $"Production frequency: {Frequency};\n" +
+                    $"Average rating: {AverageRate};]";
         }
 
         public override string ToString()
         {
 
             StringBuilder data = new StringBuilder(512);
+
 
             data.AppendLine(ToShortString().TrimEnd(']'));
 
@@ -107,6 +109,8 @@ namespace MagazinesManager
             {
                 data.AppendLine(p.ToShortString() + ',');
             }
+
+            data.Append(";\n");
 
             data.AppendLine("Articles: ");
             foreach (Article a in Articles)
@@ -121,8 +125,16 @@ namespace MagazinesManager
         public override object DeepCopy()
         {
             Magazine copy =  new Magazine(this.EditionName, this.PublicationDate, this.Circulation, this.Frequency);
-            copy.AddEditors(this.Editors.ToArray());
-            copy.AddArticles(this.Articles.ToArray());
+
+            foreach (Person e in Editors)
+            {
+                copy.AddEditors((Person)e.DeepCopy());
+            }
+
+            foreach (Article a in Articles)
+            {
+                copy.AddArticles((Article)a.DeepCopy());
+            }
 
             return copy;
         }
