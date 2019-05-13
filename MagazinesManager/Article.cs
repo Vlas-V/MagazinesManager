@@ -31,7 +31,7 @@ namespace MagazinesManager
 
         public object DeepCopy()
         {
-            return new Article (this.Author, this.Name, this.Rate);
+            return new Article (new Person(Author.Name, Author.Surname, Author.Birthdate), this.Name, this.Rate);
         }
     }
 }

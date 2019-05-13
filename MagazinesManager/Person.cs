@@ -70,7 +70,7 @@ namespace MagazinesManager
 
         public override int GetHashCode() => this.ToString().GetHashCode();
         public override bool Equals(object obj) => obj?.ToString() == this.ToString();
-        public static bool operator ==(Person p1, Person p2) => p1.Equals(p2);b
+        public static bool operator ==(Person p1, Person p2) => p1.Equals(p2);
         public static bool operator !=(Person p1, Person p2) => !p1.Equals(p2);
         public virtual object DeepCopy()
         {

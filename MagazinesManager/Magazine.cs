@@ -257,10 +257,6 @@ namespace MagazinesManager
             return result;
         }
 
-        public IEnumerator<Article> GetEnumerator()
-        {
-            return Articles.GetEnumerator();
-        }
 
         public IEnumerable ArticlesWithAuthorFromMagazine()
         {
@@ -268,20 +264,20 @@ namespace MagazinesManager
 
             IEnumerable actualImplementation()
             {
-                foreach (Article art in Magazine)
+                foreach (Article art in Articles)
                 {
                     bool authorFromTheMagazine = false;
 
                     foreach (Person ed in Editors)
                     {
-                        if(art == ed)
+                        if(art.Author == ed)
                         {
                             authorFromTheMagazine = true;
                             break;
                         }
                     }
 
-                    if (!ArticlesWithAuthorFromMagazine)
+                    if (!authorFromTheMagazine)
                     {
                         yield return art;
                     }
@@ -291,16 +287,23 @@ namespace MagazinesManager
 
         public class MagazineEnumerator : IEnumerator<Article>
         {
-            private Magazine _collection; // Magazine == collections of articles
+            private List<Article> _collection; // Magazine == collections of articles
             private int curIndex;
             private Article curBox;
 
+            private int index = 0;
 
-            public MagazineEnumerator(Magazine collection)
+            private List<Person> editors;
+
+
+            public MagazineEnumerator(Magazine magazine)
             {
-                _collection = collection;
+                _collection = magazine.Articles;
                 curIndex = -1;
                 curBox = default(Article);
+
+                editors = magazine.Editors;
+
             }
 
             public bool MoveNext()
@@ -312,10 +315,33 @@ namespace MagazinesManager
                 }
                 else
                 {
-                    // Set current box to next item in collection
-                    curBox = _collection[curIndex];
+
+                    for (int i = curIndex; i < _collection.Count; i++)
+                    {
+                        bool authorFromTheMagazine = false;
+
+                        foreach (Person ed in editors)
+                        {
+
+                            if (_collection[curIndex].Author == ed)
+                            {
+                                authorFromTheMagazine = true;
+                                break;
+                            }
+                        }
+
+                        if (!authorFromTheMagazine)
+                        {
+                            // Set current box to next item in collection
+                            curBox = _collection[curIndex];
+                            return true;
+                        }
+
+                        curIndex++;
+                    }
+
+                    return false;
                 }
-                return true;
             }
 
             public void Reset() { curIndex = -1; }
@@ -335,38 +361,13 @@ namespace MagazinesManager
 
         }
 
-        public IEnumerable ArticlesWithAuthorFromMagazine()
+        public IEnumerator<Article> GetEnumerator()
         {
-            return actualImplementation();
-
-            IEnumerable actualImplementation()
-            {
-                foreach (Article art in Articles)
-                {
-                    bool authorFromTheMagazine = false;
-
-                    foreach (Person ed in Editors)
-                    {
-
-                        if(art == ed)
-                        {
-                            authorFromTheMagazine = true;
-                            break;
-                        }
-                    }
-
-                    if (ArticlesWithAuthorFromMagazine)
-                    {
-                        yield return art;
-                    }
-                }
-            }
+            return new Magazine.MagazineEnumerator(this);
         }
 
 
-
-
-        public IEnumerable ArticlesWith(string keyword)
+        public IEnumerable EditorsWithoutArticles()
         {
             return actualImplementation();
 
@@ -378,7 +379,7 @@ namespace MagazinesManager
 
                     foreach (Article art in Articles)
                     {
-                        if (ed = art.Author)
+                        if (ed == art.Author)
                         {
                             isAuthor = true;
                             break;

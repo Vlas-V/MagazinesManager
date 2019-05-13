@@ -66,14 +66,32 @@ namespace MagazinesManager
             magazine1.Edition = e1;
             magazine1.Frequency = Frequency.Monthly;
 
-            magazine1.AddEditors(author1, author2, author3);
-            magazine1.AddArticles(article1);
-            Console.WriteLine(magazine1.ToString());
-
             magazine1.AddEditors(author4, author5);
-            magazine1.AddArticles(article2, article3, article4);
+            magazine1.AddArticles(article1, article2, article3, article4);
             Console.WriteLine(magazine1.ToString());
             Console.WriteLine();
+
+
+            Console.WriteLine("*******************************");
+            Console.WriteLine("*******************************");
+            Console.WriteLine("*******************************");
+
+
+            Console.WriteLine(magazine1.ToString());
+            Console.WriteLine();
+            Console.WriteLine();
+
+
+            foreach (Article art in magazine1)
+            {
+                Console.WriteLine(art.ToString());
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("*******************************");
+            Console.WriteLine("*******************************");
+            Console.WriteLine("*******************************");
+
 
 
             // 4
@@ -112,7 +130,7 @@ namespace MagazinesManager
             article1.Name = "Changed Name";
 
             magazine1.EditionName = "Changed Name Again";
-            magazine1.AddArticles(new Article(author5, "Village Life", 89));
+            magazine1.Articles[0].Author.Name = "000000000000";
             magazine1.Editors = new List<Person> { author5 };
 
             Console.WriteLine("After changes");
@@ -133,7 +151,9 @@ namespace MagazinesManager
 
             // 6
             Console.WriteLine("Block 6");
-
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
 
             Console.WriteLine(magazine1.ToString());
 
