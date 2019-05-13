@@ -6,7 +6,7 @@ using System.Collections;
 
 namespace MagazinesManager
 {
-    public class Magazine : Edition, IRateAndCopy, IEnumerable
+    public class Magazine : Edition, IRateAndCopy, ICollection<Article>
     {
         private Frequency frequency;
         private List<Person> editors = new List<Person>();
@@ -68,7 +68,7 @@ namespace MagazinesManager
 
         public Edition Edition
         {
-            get => (Edition)this;
+            get => new Edition(this.editionName, this.PublicationDate, this.Circulation);
             set
             {
                 this.EditionName = value.EditionName;
@@ -79,6 +79,8 @@ namespace MagazinesManager
         }
 
         double IRateAndCopy.Rating => AverageRate;
+
+
 
         public void AddEditors(params Person[] editors)
         {
@@ -141,8 +143,12 @@ namespace MagazinesManager
         }
 
         // Iterators
-    
 
+        public Article this[int index]
+        {
+            get { return (Article)Articles[index]; }
+            set { Articles[index] = value; }
+        }
 
         // Iterates over all of the articles
         IEnumerator IEnumerable.GetEnumerator()
@@ -183,6 +189,210 @@ namespace MagazinesManager
                 }
             }
         }
+
+        // ICollection interface implementation
+
+
+        public int Count => Articles.Count;
+
+        public bool IsReadOnly => false;
+
+
+        public void Add(Article item)
+        {
+            AddArticles(item);
+        }
+
+        public void Clear()
+        {
+            Articles.Clear();
+        }
+
+        public bool Contains(Article item)
+        {
+            bool found = false;
+
+            foreach (Article art in Articles)
+            {
+                if (item.Equals(art))
+                {
+                    found = true;
+                }
+            }
+
+            return found;
+        }
+
+        public void CopyTo(Article[] array, int arrayIndex)
+        {
+            if (array == null)
+                throw new ArgumentNullException("The array cannot be null.");
+            if (arrayIndex < 0)
+                throw new ArgumentOutOfRangeException("The starting array index cannot be negative.");
+            if (Count > array.Length - arrayIndex + 1)
+                throw new ArgumentException("The destination array has fewer elements than the collection.");
+
+            for (int i = 0; i < Articles.Count; i++)
+            {
+                array[i + arrayIndex] = Articles[i];
+            }
+        }
+
+        public bool Remove(Article item)
+        {
+            bool result = false;
+
+            for (int i = 0; i < Articles.Count; i++)
+            {
+                Article curArticle = (Article)Articles[i];
+
+                if (item.Equals(curArticle))
+                {
+                    Articles.RemoveAt(i);
+                    result = true;
+                    break;
+                }
+            }
+
+            return result;
+        }
+
+        public IEnumerator<Article> GetEnumerator()
+        {
+            return Articles.GetEnumerator();
+        }
+
+        public IEnumerable ArticlesWithAuthorFromMagazine()
+        {
+            return actualImplementation();
+
+            IEnumerable actualImplementation()
+            {
+                foreach (Article art in Magazine)
+                {
+                    bool authorFromTheMagazine = false;
+
+                    foreach (Person ed in Editors)
+                    {
+                        if(art == ed)
+                        {
+                            authorFromTheMagazine = true;
+                            break;
+                        }
+                    }
+
+                    if (!ArticlesWithAuthorFromMagazine)
+                    {
+                        yield return art;
+                    }
+                }
+            }
+        }
+
+        public class MagazineEnumerator : IEnumerator<Article>
+        {
+            private Magazine _collection; // Magazine == collections of articles
+            private int curIndex;
+            private Article curBox;
+
+
+            public MagazineEnumerator(Magazine collection)
+            {
+                _collection = collection;
+                curIndex = -1;
+                curBox = default(Article);
+            }
+
+            public bool MoveNext()
+            {
+                //Avoids going beyond the end of the collection.
+                if (++curIndex >= _collection.Count)
+                {
+                    return false;
+                }
+                else
+                {
+                    // Set current box to next item in collection
+                    curBox = _collection[curIndex];
+                }
+                return true;
+            }
+
+            public void Reset() { curIndex = -1; }
+
+            void IDisposable.Dispose() { }
+
+            public Article Current
+            {
+                get { return curBox; }
+            }
+
+
+            object IEnumerator.Current
+            {
+                get { return Current; }
+            }
+
+        }
+
+        public IEnumerable ArticlesWithAuthorFromMagazine()
+        {
+            return actualImplementation();
+
+            IEnumerable actualImplementation()
+            {
+                foreach (Article art in Articles)
+                {
+                    bool authorFromTheMagazine = false;
+
+                    foreach (Person ed in Editors)
+                    {
+
+                        if(art == ed)
+                        {
+                            authorFromTheMagazine = true;
+                            break;
+                        }
+                    }
+
+                    if (ArticlesWithAuthorFromMagazine)
+                    {
+                        yield return art;
+                    }
+                }
+            }
+        }
+
+
+
+
+        public IEnumerable ArticlesWith(string keyword)
+        {
+            return actualImplementation();
+
+            IEnumerable actualImplementation()
+            {
+                foreach (Person ed in Editors)
+                {
+                    bool isAuthor = false;
+
+                    foreach (Article art in Articles)
+                    {
+                        if (ed = art.Author)
+                        {
+                            isAuthor = true;
+                            break;
+                        }
+                    }
+
+                    if (!isAuthor)
+                    {
+                        yield return ed;
+                    }
+                }
+            }
+        }
+
     }
 }
 

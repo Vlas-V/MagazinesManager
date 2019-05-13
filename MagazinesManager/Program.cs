@@ -43,7 +43,7 @@ namespace MagazinesManager
                 Console.WriteLine("Message: {0}", e.Message);
                 Console.WriteLine("Source: {0}", e.Source);
             }
-
+            Console.WriteLine();
 
 
             // 3
@@ -73,12 +73,81 @@ namespace MagazinesManager
             magazine1.AddEditors(author4, author5);
             magazine1.AddArticles(article2, article3, article4);
             Console.WriteLine(magazine1.ToString());
+            Console.WriteLine();
+
+
+            // 4
+            Console.WriteLine("Block 4");
+
+            Edition edition1 = new Edition();
+            edition1 = magazine1.Edition;
+
+            Console.WriteLine(edition1.ToString());
+            Console.WriteLine();
+            Console.WriteLine();
+
+
+            // 5
+            Console.WriteLine("Block 5");
+
+            Magazine magazine1Copy = new Magazine();
+            magazine1Copy = (Magazine)magazine1.DeepCopy();
+
+
+            Console.WriteLine("Before changes");
+            Console.WriteLine("Original:\n");
+            Console.WriteLine(magazine1.ToString());
+            Console.WriteLine("Copy:\n");
+            Console.WriteLine(magazine1Copy.ToString());
+            Console.WriteLine();
+
+            Console.WriteLine("Inner object:\n");
+            Console.WriteLine("Original:\n");
+            Console.WriteLine((magazine1.Articles)[0].ToString());
+            Console.WriteLine();
+            Console.WriteLine("Copy:\n");
+            Console.WriteLine((magazine1Copy.Articles)[0].ToString());
+
+            // Changes
+            article1.Name = "Changed Name";
+
+            magazine1.EditionName = "Changed Name Again";
+            magazine1.AddArticles(new Article(author5, "Village Life", 89));
+            magazine1.Editors = new List<Person> { author5 };
+
+            Console.WriteLine("After changes");
+            Console.WriteLine("Original:\n");
+            Console.WriteLine(magazine1.ToString());
+            Console.WriteLine("Copy:\n");
+            Console.WriteLine(magazine1Copy.ToString());
+            Console.WriteLine();
+
+            Console.WriteLine("Inner object:\n");
+            Console.WriteLine("Original:\n");
+            Console.WriteLine((magazine1.Articles)[0].ToString());
+            Console.WriteLine();
+            Console.WriteLine("Copy:\n");
+            Console.WriteLine((magazine1Copy.Articles)[0].ToString());
 
 
 
+            // 6
+            Console.WriteLine("Block 6");
 
 
+            Console.WriteLine(magazine1.ToString());
 
+            Console.WriteLine("Higher than:");
+            foreach (Article a in magazine1.ArticlesHigher(80))
+            {
+                Console.WriteLine(a.ToString());
+            }
+
+            Console.WriteLine("With a provided word word:");
+            foreach (Article a in magazine1.ArticlesWith("Situation"))
+            {
+                Console.WriteLine(a.ToString());
+            }
 
         }
     }
