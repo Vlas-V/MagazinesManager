@@ -18,17 +18,25 @@
   <Class Name="MagazinesManager.Magazine" Collapsed="true">
     <Position X="1.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQoAAAAJAAAEABAUCAAABAUMCIAIAAiEAAAIQQBQIAA=</HashCode>
-      <FileName>Magazine.cs</FileName>
+      <HashCode>AQgAAAAJAAAEACAEAAAAAAEMCIAIAAiEAAAIQQAAAAA=</HashCode>
+      <FileName>Magazine.Core.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.325" />
+  </Class>
+  <Class Name="MagazinesManager.TestCollection">
+    <Position X="3.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAIAACAAAAAAAAA=</HashCode>
+      <FileName>TestCollection.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Class Name="MagazinesManager.Edition" Collapsed="true">
     <Position X="1.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAQAAAAEwAAAAEAAAAAIAIAAAAAAAAACAiA=</HashCode>
-      <FileName>Edition.cs</FileName>
+      <FileName>Edition.Core.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Interface Name="MagazinesManager.IRateAndCopy" Collapsed="true">
     <Position X="0.5" Y="3.25" Width="1.5" />

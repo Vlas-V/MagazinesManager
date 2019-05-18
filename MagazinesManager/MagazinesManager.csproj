@@ -44,7 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Article.cs" />
-    <Compile Include="Edition.cs" />
+    <Compile Include="Edition.Core.cs" />
+    <Compile Include="Edition.Comparison.cs" />
     <Compile Include="Frequency.cs" />
     <Compile Include="IRateAndCopy.cs" />
     <Compile Include="Magazine.Core.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestCollection.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

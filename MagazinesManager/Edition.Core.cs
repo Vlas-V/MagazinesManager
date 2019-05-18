@@ -5,13 +5,13 @@ using System.Text;
 
 namespace MagazinesManager
 {
-    public class Edition
+    public partial class Edition : IComparable, IComparer<Edition>
     {
         protected string editionName;
         protected DateTime publicationDate;
         protected int circulation;
 
-        public Edition( string editionName = "", 
+        public Edition(string editionName = "",
                         DateTime publicationDate = new DateTime(),
                         int cirulation = 0)
         {
@@ -56,7 +56,7 @@ namespace MagazinesManager
 
         public override string ToString()
         {
-            return   $"[Edition Name: {EditionName};\n" +
+            return $"[Edition Name: {EditionName};\n" +
                      $"Publication Date: {PublicationDate}\n; " +
                      $"Circulation: {Circulation}]";
         }

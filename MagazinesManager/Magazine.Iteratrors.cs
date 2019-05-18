@@ -114,7 +114,6 @@ namespace MagazinesManager
             private int curIndex;
             private Article curBox;
 
-            private int index = 0;
 
             private List<Person> editors;
 
