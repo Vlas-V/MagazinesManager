@@ -108,6 +108,25 @@ namespace MagazinesManager
 
         // Helper class that implements IEnumerator to iterate over articles
         // with author being an editor in the Magazine 
+
+        public IEnumerable ArticlesWithAuthorEditior
+        { get { return (IEnumerable)new MagazineEnumerableOverArticlesWithAuthor(this); } }
+        
+        public class MagazineEnumerableOverArticlesWithAuthor : IEnumerable
+        {
+            private Magazine magazine;
+
+            public MagazineEnumerableOverArticlesWithAuthor(Magazine magazine)
+            {
+                this.magazine = magazine;
+            }
+
+            IEnumerator IEnumerable.GetEnumerator()
+            {
+                return new MagazineEnumerator(magazine);
+            }
+
+        }
         public class MagazineEnumerator : IEnumerator<Article>
         {
             private List<Article> _collection; // Magazine == collections of articles

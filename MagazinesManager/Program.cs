@@ -11,7 +11,6 @@ namespace MagazinesManager
         static void Main(string[] args)
         {
 
-         
 
         }
     }

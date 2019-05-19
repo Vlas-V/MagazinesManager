@@ -13,8 +13,6 @@ namespace MagazinesManager
         Dictionary<Edition, Magazine> dictEditionIsKey = new Dictionary<Edition, Magazine>();
         Dictionary<string, Magazine> dictStringIsKey = new Dictionary<string, Magazine>();
 
-
-
      
     }
 }
