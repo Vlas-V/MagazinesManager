@@ -50,6 +50,7 @@
     <Compile Include="IRateAndCopy.cs" />
     <Compile Include="Magazine.Core.cs" />
     <Compile Include="Magazine.Iteratrors.cs" />
+    <Compile Include="MagazineCollection.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
