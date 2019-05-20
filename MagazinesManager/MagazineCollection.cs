@@ -18,22 +18,48 @@ namespace MagazinesManager
 
         void AddDefaults()
         {
-            throw new NotImplementedException();
+            Magazine mag1 = new Magazine();
+            Magazine mag2 = new Magazine();
+            Magazine mag3 = new Magazine();
+
+            AddMagazines(mag1, mag2, mag3);
         }
 
         void AddMagazines(params Magazine[] mags)
         {
-            throw new NotImplementedException();
+            Magazines.AddRange(mags);
         }
 
         public override string ToString()
         {
-            return base.ToString();
+            StringBuilder data = new StringBuilder(Magazines.Count * 512);
+            data.AppendLine("[");
+
+            foreach (Magazine m in Magazines)
+            {
+                data.AppendLine("{");
+                data.AppendLine(m.ToString().TrimStart(']').TrimEnd(']') + ";");
+                data.AppendLine("}");
+            }
+
+            data.AppendLine("]");
+            return data.ToString();
         }
 
         public string ToShortString()
         {
-            return base.ToString();
+            StringBuilder data = new StringBuilder(Magazines.Count * 128);
+            data.AppendLine("[");
+
+            foreach (Magazine m in Magazines)
+            {
+                data.AppendLine("{");
+                data.AppendLine(m.ToShortString().TrimStart(']').TrimEnd(']') + ";");
+                data.AppendLine("}");
+            }
+
+            data.AppendLine("]");
+            return data.ToString();
         }
 
 
