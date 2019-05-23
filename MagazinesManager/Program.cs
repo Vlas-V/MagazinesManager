@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Diagnostics;
 
 namespace MagazinesManager
 {
@@ -31,8 +30,12 @@ namespace MagazinesManager
                 ycnt++;
             } while (ydelta == 0);
 
-            Console.WriteLine("Environment:\t{0} ms, in {1} cycles ", ydelta, ycnt);
 
+            // 6
+            Console.WriteLine("Block 6");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
 
             Stopwatch sw = new Stopwatch();
             int zcnt = 0;
