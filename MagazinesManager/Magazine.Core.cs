@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MagazinesManager
 {
-    public partial class Magazine
+    public partial class Magazine: Edition
     {
         private Frequency frequency;
         private List<Person> editors = new List<Person>();

@@ -15,7 +15,7 @@ namespace MagazinesManager
         private Dictionary<string, Magazine> dictStringIsKey = new Dictionary<string, Magazine>();
 
         // Constructor 
-        TestCollection(int n)
+        public TestCollection(int n)
         {
             Magazine current = null;
             Edition currentKey = null;

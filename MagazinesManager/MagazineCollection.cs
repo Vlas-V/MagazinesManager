@@ -25,7 +25,7 @@ namespace MagazinesManager
             AddMagazines(mag1, mag2, mag3);
         }
 
-        void AddMagazines(params Magazine[] mags)
+        public void AddMagazines(params Magazine[] mags)
         {
             Magazines.AddRange(mags);
         }
@@ -65,17 +65,17 @@ namespace MagazinesManager
 
         // Methods for sorting
 
-        void SortByName()
+        public void SortByName()
         {
             Magazines.Sort();
         }
 
-        void SortByPublicationDate()
+        public void SortByPublicationDate()
         {
             Magazines.Sort((IComparer<Edition>)new Magazine());
         }
 
-        void SortByCirculation()
+        public void SortByCirculation()
         {
             Magazines.Sort(Magazine.SortByCirculation);
         }

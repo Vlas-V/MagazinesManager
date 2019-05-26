@@ -13,9 +13,8 @@ namespace MagazinesManager
         // This method implements IComparable interface to sort an array of Editions by name
         public int CompareTo(object obj)
         {
-            Edition temp = obj as Edition;
-            if (temp != null)
-                return editionName.CompareTo(obj);
+            if (obj is Edition e)
+                return editionName.CompareTo(e.EditionName);
             else
                 throw new ArgumentException("Parameter is not a Car!");
         }
@@ -26,12 +25,14 @@ namespace MagazinesManager
             if (x == null || y == null)
                 throw new ArgumentNullException();
 
-            if (x.PublicationDate > x.PublicationDate)
+            if (x.publicationDate > y.publicationDate)
                 return 1;
-            if (x.PublicationDate < x.PublicationDate)
+            if (x.publicationDate < y.publicationDate)
                 return -1;
             else
                 return 0;
+
+            //return x.PublicationDate.CompareTo(y.PublicationDate);
         }
 
         // This helper class is used to sort an array of Editions by Circulation
@@ -42,9 +43,9 @@ namespace MagazinesManager
                 if (x == null || y == null)
                     throw new ArgumentNullException();
 
-                if (x.Circulation > x.Circulation)
+                if (x.Circulation > y.Circulation)
                     return 1;
-                if (x.Circulation < x.Circulation)
+                if (x.Circulation < y.Circulation)
                     return -1;
                 else
                     return 0;
