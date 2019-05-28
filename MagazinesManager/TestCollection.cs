@@ -57,7 +57,7 @@ namespace MagazinesManager
             searchTime = Stopwatch.StartNew();
             contains = listOfKeys.Contains(magazine.Edition);
             searchTime.Stop();
-            milliSec = searchTime.ElapsedMilliseconds;
+            milliSec = searchTime.ElapsedTicks;
 
             Console.WriteLine($"Search time for List<Tkey>: {milliSec} ms");
             Console.WriteLine($"The element has been found: {contains}");
@@ -68,7 +68,7 @@ namespace MagazinesManager
             searchTime = Stopwatch.StartNew();
             contains = listOfStrings.Contains(magazine.Edition.ToString());
             searchTime.Stop();
-            milliSec = searchTime.ElapsedMilliseconds;
+            milliSec = searchTime.ElapsedTicks;
 
             Console.WriteLine($"Search time for List<string>: {milliSec} ms");
             Console.WriteLine($"The element has been found: {contains}");
@@ -79,7 +79,7 @@ namespace MagazinesManager
             searchTime = Stopwatch.StartNew();
             contains = dictEditionIsKey.ContainsKey(magazine.Edition);
             searchTime.Stop();
-            milliSec = searchTime.ElapsedMilliseconds;
+            milliSec = searchTime.ElapsedTicks;
 
             Console.WriteLine($"Search time for Dictionary<TKey, TValue> (by key): {milliSec} ms");
             Console.WriteLine($"The element has been found: {contains}");
@@ -90,7 +90,7 @@ namespace MagazinesManager
             searchTime = Stopwatch.StartNew();
             contains = dictEditionIsKey.ContainsValue(magazine);
             searchTime.Stop();
-            milliSec = searchTime.ElapsedMilliseconds;
+            milliSec = searchTime.ElapsedTicks;
 
             Console.WriteLine($"Search time for Dictionary<TKey, TValue> (by value): {milliSec} ms");
             Console.WriteLine($"The element has been found: {contains}");
@@ -101,7 +101,7 @@ namespace MagazinesManager
             searchTime = Stopwatch.StartNew();
             contains = dictStringIsKey.ContainsKey(magazine.Edition.ToString());
             searchTime.Stop();
-            milliSec = searchTime.ElapsedMilliseconds;
+            milliSec = searchTime.ElapsedTicks;
 
             Console.WriteLine($"Search time for Dictionary<string, TValue> (by key): {milliSec} ms");
             Console.WriteLine($"The element has been found: {contains}");
@@ -112,7 +112,7 @@ namespace MagazinesManager
             searchTime = Stopwatch.StartNew();
             contains = dictStringIsKey.ContainsValue(magazine);
             searchTime.Stop();
-            milliSec = searchTime.ElapsedMilliseconds;
+            milliSec = searchTime.ElapsedTicks;
 
             Console.WriteLine($"Search time for Dictionary<string, TValue> (by value): {milliSec} ms");
             Console.WriteLine($"The element has been found: {contains}");

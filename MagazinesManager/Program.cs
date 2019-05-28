@@ -65,11 +65,11 @@ namespace MagazinesManager
 
 
             // 3
-            TestCollection testCollection = new TestCollection(10000);
+            TestCollection testCollection = new TestCollection(100000);
             Magazine first = TestCollection.NewElement(0);
-            Magazine central = TestCollection.NewElement(4999);
-            Magazine last = TestCollection.NewElement(9999);
-            Magazine fromOutside = TestCollection.NewElement(200000);
+            Magazine central = TestCollection.NewElement(49999);
+            Magazine last = TestCollection.NewElement(99999);
+            Magazine fromOutside = TestCollection.NewElement(20000000);
 
             Console.WriteLine(" ******* Searching for the first element ******** ");
             testCollection.Benchmarking(first);
