@@ -10,6 +10,10 @@ namespace MagazinesManager
     {
         static void Main(string[] args)
         {
+
+            // Delegates and Events Testing 
+
+
             // 1
             Person author1 = new Person("Jon", "Snow", new DateTime(1999, 12, 1));
             Person author2 = new Person("Joseph", "Avelsev", new DateTime(1999, 12, 1));
