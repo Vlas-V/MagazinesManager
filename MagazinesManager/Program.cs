@@ -10,9 +10,26 @@ namespace MagazinesManager
     {
         static void Main(string[] args)
         {
+            // Random names for Persons test 
 
-            // Delegates and Events Testing 
 
+            int people_count = 20;
+            Person[] people = new Person[people_count];
+
+            for (int i = 0; i < people.Length; i++)
+            {
+                people[i] = new Person(random: true); 
+            }
+
+            foreach (Person p in people)
+            {
+                Console.WriteLine(p.ToString());
+                Console.WriteLine();
+            }
+
+
+
+            // Delegates and Events Testin
 
             // 1
             Person author1 = new Person("Jon", "Snow", new DateTime(1999, 12, 1));
@@ -48,44 +65,15 @@ namespace MagazinesManager
             magazine4.AddEditors(author7, author4);
             magazine4.AddArticles(article7, article6, article8);
 
+
+
+
+
             MagazineCollection magazineCollection = new MagazineCollection();
             magazineCollection.AddMagazines(magazine1, magazine2, magazine3, magazine4);
 
             Console.WriteLine(magazineCollection.ToString());
 
-
-            // 2
-            Console.WriteLine("   ******** SORTED BY NAME ********   ");
-            magazineCollection.SortByName();
-            Console.WriteLine(magazineCollection.ToString());
-
-            Console.WriteLine("   ******** SORTED BY PUBLICATION DATE ********   ");
-            magazineCollection.SortByPublicationDate();
-            Console.WriteLine(magazineCollection.ToString());
-
-            Console.WriteLine("   ******** SORTED BY CIRCUALATION ********   ");
-            magazineCollection.SortByCirculation();
-            Console.WriteLine(magazineCollection.ToString());
-
-
-            // 3
-            TestCollection testCollection = new TestCollection(100000);
-            Magazine first = TestCollection.NewElement(0);
-            Magazine central = TestCollection.NewElement(49999);
-            Magazine last = TestCollection.NewElement(99999);
-            Magazine fromOutside = TestCollection.NewElement(20000000);
-
-            Console.WriteLine(" ******* Searching for the first element ******** ");
-            testCollection.Benchmarking(first);
-
-            Console.WriteLine(" ******* Searching for the central element ******** ");
-            testCollection.Benchmarking(central);
-
-            Console.WriteLine(" ******* Searching for the last element *********");
-            testCollection.Benchmarking(last);
-
-            Console.WriteLine(" ******* Searching for an element from outside element ********");
-            testCollection.Benchmarking(fromOutside);
 
 
 

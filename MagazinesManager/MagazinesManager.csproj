@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,21 +48,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Article.cs" />
-    <Compile Include="Edition.Core.cs" />
-    <Compile Include="Edition.Comparison.cs" />
-    <Compile Include="Frequency.cs" />
-    <Compile Include="IRateAndCopy.cs" />
-    <Compile Include="Magazine.Core.cs" />
-    <Compile Include="Magazine.Iteratrors.cs" />
-    <Compile Include="MagazineCollection.cs" />
+    <Compile Include="Classes\Edition\Edition.Core.cs" />
+    <Compile Include="Classes\Edition\Edition.Comparison.cs" />
+    <Compile Include="Others\Frequency.cs" />
+    <Compile Include="Interfaces\IRateAndCopy.cs" />
+    <Compile Include="Classes\Magazine\Magazine.Core.cs" />
+    <Compile Include="Classes\Magazine\Magazine.Iteratrors.cs" />
+    <Compile Include="Classes\MagazineCollection\MagazineCollection.cs" />
     <Compile Include="Person.cs" />
+    <Compile Include="Classes\Person\Person.Randomization.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestCollection.cs" />
+    <Compile Include="Classes\TestCollection\TestCollection.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="ClassDiagram1.cd" />
+    <None Include="Configurations\App.config" />
+    <None Include="ClassDiagram.cd" />
+    <None Include="Configurations\packages.config" />
+    <None Include="RandomValuesDB\first-names.json" />
+    <None Include="RandomValuesDB\second-names.json" />
+    <None Include="RandomValuesDB\articles-magazines-names.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Classes\Article\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

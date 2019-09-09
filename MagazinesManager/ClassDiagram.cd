@@ -3,8 +3,8 @@
   <Class Name="MagazinesManager.Person" Collapsed="true">
     <Position X="5.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAABAAAAAAEhAAEAAQABAAMAIAAAAAIAAAAAiA=</HashCode>
-      <FileName>Person.cs</FileName>
+      <HashCode>AAAAAIAABAAAAAAEhAAEAAQAJAAMAIAAAAAJAAAAAiA=</HashCode>
+      <FileName>Classes\Person\Person.Randomization.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MagazinesManager.Article" Collapsed="true">
@@ -19,22 +19,22 @@
     <Position X="1.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQgAAAAJAAAEACAEAAAAAAEMCIAIAAiEAgAIQQAAAAA=</HashCode>
-      <FileName>Magazine.Core.cs</FileName>
+      <FileName>Classes\Magazine\Magazine.Core.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.325" />
   </Class>
   <Class Name="MagazinesManager.TestCollection">
     <Position X="4.25" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAIAACAAAAAAAAA=</HashCode>
-      <FileName>TestCollection.cs</FileName>
+      <HashCode>AAAAAAAAAAAQAAAgAAAAAAAAAAAAAAMAACAAAAAAAAA=</HashCode>
+      <FileName>Classes\TestCollection\TestCollection.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MagazinesManager.Edition" Collapsed="true">
     <Position X="1.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAQAAAQEwAAAAEAABAAIAIAAAABAAAACAiA=</HashCode>
-      <FileName>Edition.Comparison.cs</FileName>
+      <FileName>Classes\Edition\Edition.Comparison.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -42,7 +42,7 @@
     <Position X="1.75" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEAAAEBIAAAAAEAAAIAAAABAAAAAAAAgAIAAAAAAA=</HashCode>
-      <FileName>MagazineCollection.cs</FileName>
+      <FileName>Classes\MagazineCollection\MagazineCollection.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="MagazinesManager.IRateAndCopy" Collapsed="true">
