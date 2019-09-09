@@ -2,37 +2,29 @@
 using System.IO;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using System.Linq;
-using System.Text;
+
 
 namespace MagazinesManager
 {
+
     /*
      *  This part of the Person class 
      *  facilitates the creation of 
      *  objects with random states
     */
 
-    public partial class Person
+    public partial class Article : IRateAndCopy
     {
         private static List<string> randomNames;
-        private static List<string> randomSurnames;
         private static Random r;
 
-
-        static Person()
+        static Article()
         {
 
-            using (StreamReader r = new StreamReader("../../RandomValuesDB/first-names.json"))
+            using (StreamReader r = new StreamReader("../../RandomValuesDB/articles-magazines-names.json"))
             {
                 string json = r.ReadToEnd();
                 randomNames = JsonConvert.DeserializeObject<List<string>>(json);
-            }
-
-            using (StreamReader r = new StreamReader("../../RandomValuesDB/second-names.json"))
-            {
-                string json = r.ReadToEnd();
-                randomSurnames = JsonConvert.DeserializeObject<List<string>>(json);
             }
 
             r = new Random();
@@ -40,3 +32,4 @@ namespace MagazinesManager
         }
     }
 }
+

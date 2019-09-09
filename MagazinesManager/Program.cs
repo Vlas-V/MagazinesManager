@@ -10,22 +10,64 @@ namespace MagazinesManager
     {
         static void Main(string[] args)
         {
-            // Random names for Persons test 
+
+            /*
+             * 
+             * Random-state objects generation testing
+             * for the following classes:
+             * 
+             * Person
+             * Article
+             * Magazine 
+             * MagazineCollection
+             * 
+             */
 
 
-            int people_count = 20;
-            Person[] people = new Person[people_count];
 
-            for (int i = 0; i < people.Length; i++)
+            // Generate random authors 
+
+            Console.WriteLine("RANDOM AUTHORS:\n\n");
+
+            int authors_count = 50;
+            Person[] authors = new Person[authors_count];
+
+            for (int i = 0; i < authors.Length; i++)
             {
-                people[i] = new Person(random: true); 
+                authors[i] = new Person(random: true); 
             }
 
-            foreach (Person p in people)
+            foreach (Person a in authors)
             {
-                Console.WriteLine(p.ToString());
+                Console.WriteLine(a.ToString());
                 Console.WriteLine();
             }
+
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+
+
+
+            // Generate random articles (with default random authors)
+
+            Console.WriteLine("RANDOM ARTICLES:\n\n");
+
+            int articles_count = 50;
+            Article[] articles = new Article[articles_count];
+
+            for (int i = 0; i < articles.Length; i++)
+            {
+                articles[i] = new Article(random: true);
+            }
+
+            foreach (Article a in articles)
+            {
+                Console.WriteLine(a.ToString());
+                Console.WriteLine();
+            }
+
+
 
 
 

@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Article.cs" />
+    <Compile Include="Classes\Article\Article.Randomization.cs" />
     <Compile Include="Classes\Edition\Edition.Core.cs" />
     <Compile Include="Classes\Edition\Edition.Comparison.cs" />
     <Compile Include="Others\Frequency.cs" />
@@ -69,8 +70,6 @@
     <None Include="RandomValuesDB\second-names.json" />
     <None Include="RandomValuesDB\articles-magazines-names.json" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Classes\Article\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

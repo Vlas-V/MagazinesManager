@@ -1,11 +1,10 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+
 
 namespace MagazinesManager
 {
-    public class Article : IRateAndCopy
+    public partial class Article : IRateAndCopy
     {
         public Person Author { get; set; }
         public string Name { get; set; }
@@ -13,11 +12,22 @@ namespace MagazinesManager
 
         public double Rating => Rate;
 
-        public Article(Person author = null, string name = "", double rating = 0)
+        public Article(Person author = null, string name = "", double rating = 0, Boolean random = false)
         {
-            Author = author ?? new Person();
-            Name = name;
-            Rate = rating;
+            if (random)
+            {
+                Author = author ?? new Person(random: true); // ? (every article is gonna has a unique author?)
+                Name = randomNames[r.Next(randomNames.Count())];
+                Rate = r.NextDouble() * 10;
+
+                // * Check the other part of the class (Article.Randomization)
+            }
+            else
+            {
+                Author = author ?? new Person();
+                Name = name;
+                Rate = rating;
+            }
         }
 
         public override string ToString()
