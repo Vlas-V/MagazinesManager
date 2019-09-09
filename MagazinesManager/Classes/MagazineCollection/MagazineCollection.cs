@@ -11,6 +11,41 @@ namespace MagazinesManager
 
         public string Name { get; set; }
 
+
+        // Delagate 
+        public delegate void MagazineListHandler(object source, MagazineListHandlerEventArgs args);
+        public class MagazineListHandlerEventArgs : EventArgs
+        {
+            public string CollectionName { get; set; }
+            public string ChangeType { get; set; }
+            public int NumberOfChangedElement { get; set; } 
+
+            public MagazineListHandlerEventArgs(string collectionName = "",
+                                                string changeType = "",
+                                                int numberOfChangedElement = -1)
+            {
+                CollectionName = collectionName;
+                ChangeType = changeType;
+                NumberOfChangedElement = numberOfChangedElement;
+            }
+
+            public override string ToString()
+            {
+                string info = String.Empty;
+                info += "[\n";
+                info += $"Colletion's name: {CollectionName}\n";
+                info += $"Type of change: {ChangeType}\n";
+                info += $"Number of the changed element: {NumberOfChangedElement}\n";
+                info += "]";
+                return info;
+            }
+        }
+
+        // Events 
+        public event MagazineListHandler MagazineAdded;
+        public event MagazineListHandler MagazineReplaced;
+        
+
         public List<Magazine> Magazines
         {
             // Reference of value?
@@ -24,24 +59,23 @@ namespace MagazinesManager
         }
 
         void AddDefaults()
-        {
-            Magazine mag1 = new Magazine();
-            Magazine mag2 = new Magazine();
-            Magazine mag3 = new Magazine();
-
-            AddMagazines(mag1, mag2, mag3);
-        }
+        { for (int i = 0; i < 3; i++) AddMagazines(new Magazine(random: true)); }
 
         public void AddMagazines(params Magazine[] mags)
         {
-            Magazines.AddRange(mags);
+            foreach (Magazine m in mags)
+            {
+                Magazines.Add(m);
+                MagazineAdded?.Invoke(this, new MagazineListHandlerEventArgs(Name, "Element added", Magazines.IndexOf(m)));
+            }
         }
 
-        public bool Replace(int j, Magazine mg)
+        public bool Replace(int index, Magazine m)
         {
-            if (j >= magazines.Count) return false;
-
-            magazines[j] = mg;
+            if (index >= magazines.Count) return false;
+           
+            magazines[index] = m;
+            MagazineReplaced?.Invoke(this, new MagazineListHandlerEventArgs(Name, "Element replaced", index));
             return true;
         }
 
@@ -55,6 +89,7 @@ namespace MagazinesManager
             set
             {
                 magazines[index] = value;
+                MagazineReplaced?.Invoke(this, new MagazineListHandlerEventArgs(Name, "Element replaced", index));
             }
         }
  
