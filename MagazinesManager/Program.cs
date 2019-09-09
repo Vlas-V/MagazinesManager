@@ -11,110 +11,67 @@ namespace MagazinesManager
         static void Main(string[] args)
         {
 
-            /*
-             * 
-             * Random-state objects generation testing
-             * for the following classes:
-             * 
-             * Person
-             * Article
-             * Magazine 
-             * MagazineCollection
-             * 
-             */
+            // This can be called a generation of related MagazineCollections
+            // with random-state objects 
 
+
+            int authors_number = 20;
+            int articles_number = 100;
+            int magazines_number = 10;
 
 
             // Generate random authors 
-
-            Console.WriteLine("RANDOM AUTHORS:\n\n");
-
-            int authors_count = 50;
-            Person[] authors = new Person[authors_count];
+            Person[] authors = new Person[authors_number];
 
             for (int i = 0; i < authors.Length; i++)
             {
                 authors[i] = new Person(random: true); 
             }
 
-            foreach (Person a in authors)
-            {
-                Console.WriteLine(a.ToString());
-                Console.WriteLine();
-            }
-
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-
-
 
             // Generate random articles (with default random authors)
+            Random r = new Random();
 
-            Console.WriteLine("RANDOM ARTICLES:\n\n");
-
-            int articles_count = 50;
-            Article[] articles = new Article[articles_count];
+            Article[] articles = new Article[articles_number];
 
             for (int i = 0; i < articles.Length; i++)
             {
-                articles[i] = new Article(random: true);
+                articles[i] = new Article(author: authors[r.Next(authors.Length)], random: true);
             }
 
-            foreach (Article a in articles)
+
+            // Generate magazines with articles and editors 
+            Magazine[] magazines = new Magazine[magazines_number];
+
+            int articlesEach = articles_number / magazines_number;
+            int editorsEach = authors_number / magazines_number;
+
+            for (int i = 0; i < magazines_number; i++)
             {
-                Console.WriteLine(a.ToString());
-                Console.WriteLine();
+                magazines[i] = new Magazine(random: true);
+                for (int j = 0; j < articlesEach; j++) magazines[i].AddArticles(articles[i * articlesEach + j]);
+                for (int j = 0; j < editorsEach; j++) magazines[i].AddEditors(authors[i * editorsEach + j]);
             }
 
 
+            // Generate magazines
+            MagazineCollection magazineCollection1 = new MagazineCollection();
+            MagazineCollection magazineCollection2 = new MagazineCollection();
 
+            for (int i = 0; i < magazines.Length; i++)
+            {
+                if (i < 6)
+                {
+                    magazineCollection1.AddMagazines(magazines[i]);
+                }
+                else
+                {
+                    magazineCollection2.AddMagazines(magazines[i]);
+                }
+            }
 
-
-            // Delegates and Events Testin
-
-            // 1
-            Person author1 = new Person("Jon", "Snow", new DateTime(1999, 12, 1));
-            Person author2 = new Person("Joseph", "Avelsev", new DateTime(1999, 12, 1));
-            Person author3 = new Person("Jo", "Jonson", new DateTime(1999, 12, 1));
-            Person author4 = new Person("Bruce", "Ali", new DateTime(1999, 12, 1));
-            Person author5 = new Person("Donald", "Trump", new DateTime(1999, 12, 1));
-            Person author6 = new Person("Bill", "Clinton", new DateTime(1999, 12, 1));
-            Person author7 = new Person("Bill", "Gates", new DateTime(1999, 12, 1));
-
-            Article article1 = new Article(author1, "Winter", 88);
-            Article article2 = new Article(author2, "House", 89);
-            Article article3 = new Article(author3, "Summer", 34);
-            Article article4 = new Article(author4, "Ukrainian Current Political Situation", 90);
-            Article article5 = new Article(author4, "Done?", 90);
-            Article article6 = new Article(author7, "The first real action", 90);
-            Article article7 = new Article(author6, "Stop complaining", 90);
-            Article article8 = new Article(author5, "Oh, I love this planet!", 90);
-
-            Magazine magazine1 = new Magazine("AARP", new DateTime(1943, 12, 1), 6000, Frequency.Weekly);
-            magazine1.AddEditors(author1, author2);
-            magazine1.AddArticles(article1, article2, article3);
-
-            Magazine magazine2 = new Magazine("National Geotraphic", new DateTime(1973, 05, 12), 14000, Frequency.Monthly);
-            magazine2.AddEditors(author3, author4);
-            magazine2.AddArticles(article2, article3, article4);
-
-            Magazine magazine3 = new Magazine("Time Magazine", new DateTime(1960, 01, 20), 8000, Frequency.Monthly);
-            magazine3.AddEditors(author5, author6);
-            magazine3.AddArticles(article4, article5, article6);
-
-            Magazine magazine4 = new Magazine("American First", new DateTime(1900, 03, 22), 10000, Frequency.Monthly);
-            magazine4.AddEditors(author7, author4);
-            magazine4.AddArticles(article7, article6, article8);
-
-
-
-
-
-            MagazineCollection magazineCollection = new MagazineCollection();
-            magazineCollection.AddMagazines(magazine1, magazine2, magazine3, magazine4);
-
-            Console.WriteLine(magazineCollection.ToString());
+            Console.WriteLine(magazineCollection1.ToString());
+            Console.WriteLine(magazineCollection2.ToString());
 
 
 

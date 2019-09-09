@@ -38,7 +38,7 @@ namespace MagazinesManager
             foreach (Magazine m in Magazines)
             {
                 data.AppendLine("{");
-                data.AppendLine(m.ToString().TrimStart(']').TrimEnd(']') + ";");
+                data.AppendLine(m.ToString().TrimStart('[').TrimEnd(']'));
                 data.AppendLine("}");
             }
 
@@ -54,7 +54,7 @@ namespace MagazinesManager
             foreach (Magazine m in Magazines)
             {
                 data.AppendLine("{");
-                data.AppendLine(m.ToShortString().TrimStart(']').TrimEnd(']') + ";");
+                data.AppendLine(m.ToShortString().TrimStart('[').TrimEnd(']'));
                 data.AppendLine("}");
             }
 

@@ -17,10 +17,18 @@ namespace MagazinesManager
         public Magazine(string editionName = "",
                         DateTime publicationDate = new DateTime(),
                         int circulation = 0,
-                        Frequency frequency = 0)
-            : base(editionName, publicationDate, circulation)
+                        Frequency frequency = 0,
+                        Boolean random = false)
+            : base(editionName, publicationDate, circulation, random)
         {
-            Frequency = frequency;
+            if (random)
+            {
+                Frequency = (Frequency)r.Next(Enum.GetNames(typeof(Frequency)).Length);
+            }
+            else
+            {
+                Frequency = frequency;
+            }
         }
 
         public Frequency Frequency

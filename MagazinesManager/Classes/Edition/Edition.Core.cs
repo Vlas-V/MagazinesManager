@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using System.Linq;
 using System.Text;
 
@@ -11,13 +13,42 @@ namespace MagazinesManager
         protected DateTime publicationDate;
         protected int circulation;
 
+
+        // Randomization 
+
+        private static List<string> randomNames;
+        protected static Random r;
+
+        static Edition()
+        {
+
+            using (StreamReader r = new StreamReader("../../RandomValuesDB/articles-magazines-names.json"))
+            {
+                string json = r.ReadToEnd();
+                randomNames = JsonConvert.DeserializeObject<List<string>>(json);
+            }
+
+            r = new Random();
+
+        }
+
         public Edition(string editionName = "",
                         DateTime publicationDate = new DateTime(),
-                        int cirulation = 0)
+                        int cirulation = 0,
+                        Boolean random = false)
         {
-            EditionName = editionName;
-            PublicationDate = publicationDate;
-            Circulation = cirulation;
+            if (random)
+            {
+                EditionName = randomNames[r.Next(randomNames.Count)] + " ed.";
+                PublicationDate = new DateTime(1900 + r.Next(121), r.Next(1, 13), r.Next(1, 29));
+                Circulation = r.Next(1, 101)*1000;
+            }
+            else
+            {
+                EditionName = editionName;
+                PublicationDate = publicationDate;
+                Circulation = cirulation;
+            }
         }
 
         public string EditionName
@@ -56,9 +87,9 @@ namespace MagazinesManager
 
         public override string ToString()
         {
-            return $"[Edition Name: {EditionName};\n" +
-                     $"Publication Date: {PublicationDate}\n; " +
-                     $"Circulation: {Circulation}]";
+            return $"[\nEdition Name: {EditionName};\n" +
+                     $"Publication Date: {PublicationDate};\n" +
+                     $"Circulation: {Circulation};]";
         }
 
         public override int GetHashCode() => this.ToString().GetHashCode();

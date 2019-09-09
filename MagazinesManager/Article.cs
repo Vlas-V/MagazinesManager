@@ -12,7 +12,10 @@ namespace MagazinesManager
 
         public double Rating => Rate;
 
-        public Article(Person author = null, string name = "", double rating = 0, Boolean random = false)
+        public Article( Person author = null, 
+                        string name = "",
+                        double rating = 0, 
+                        Boolean random = false)
         {
             if (random)
             {
