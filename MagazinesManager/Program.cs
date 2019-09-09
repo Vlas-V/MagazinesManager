@@ -55,8 +55,8 @@ namespace MagazinesManager
 
 
             // Generate magazines
-            MagazineCollection magazineCollection1 = new MagazineCollection();
-            MagazineCollection magazineCollection2 = new MagazineCollection();
+            MagazineCollection magazineCollection1 = new MagazineCollection("THE FIRST coll.");
+            MagazineCollection magazineCollection2 = new MagazineCollection("THE SECOND coll.");
 
             for (int i = 0; i < magazines.Length; i++)
             {
@@ -73,6 +73,9 @@ namespace MagazinesManager
             Console.WriteLine(magazineCollection1.ToString());
             Console.WriteLine(magazineCollection2.ToString());
 
+
+
+            Console.WriteLine();
 
 
 

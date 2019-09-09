@@ -9,12 +9,19 @@ namespace MagazinesManager
     {
         private List<Magazine> magazines = new List<Magazine>();
 
+        public string Name { get; set; }
+
         public List<Magazine> Magazines
         {
             // Reference of value?
             get { return magazines; }
         }
 
+        public MagazineCollection(string name = "")
+        {
+            Name = name;
+            magazines = new List<Magazine>();
+        }
 
         void AddDefaults()
         {
@@ -30,10 +37,33 @@ namespace MagazinesManager
             Magazines.AddRange(mags);
         }
 
+        public bool Replace(int j, Magazine mg)
+        {
+            if (j >= magazines.Count) return false;
+
+            magazines[j] = mg;
+            return true;
+        }
+
+        public Magazine this[int index]
+        {
+            get
+            {
+                return magazines[index];
+            }
+
+            set
+            {
+                magazines[index] = value;
+            }
+        }
+ 
+
         public override string ToString()
         {
             StringBuilder data = new StringBuilder(Magazines.Count * 512);
             data.AppendLine("[");
+            data.AppendLine($"Collection's name: {Name};");
 
             foreach (Magazine m in Magazines)
             {
