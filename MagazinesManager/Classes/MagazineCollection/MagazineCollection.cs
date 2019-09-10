@@ -18,15 +18,15 @@ namespace MagazinesManager
         {
             public string CollectionName { get; set; }
             public string ChangeType { get; set; }
-            public int NumberOfChangedElement { get; set; } 
+            public int NumberOfTheElement { get; set; } 
 
             public MagazineListHandlerEventArgs(string collectionName,
                                                 string changeType,
-                                                int numberOfChangedElement)
+                                                int numberOfTheElement)
             {
                 CollectionName = collectionName;
                 ChangeType = changeType;
-                NumberOfChangedElement = numberOfChangedElement;
+                NumberOfTheElement = numberOfTheElement;
             }
 
             public override string ToString()
@@ -35,7 +35,7 @@ namespace MagazinesManager
                 info += "[\n";
                 info += $"Colletion's name: {CollectionName}\n";
                 info += $"Type of change: {ChangeType}\n";
-                info += $"Number of the changed element: {NumberOfChangedElement}\n";
+                info += $"Number of the changed/added element: {NumberOfTheElement}\n";
                 info += "]";
                 return info;
             }
@@ -91,7 +91,7 @@ namespace MagazinesManager
                 magazines[index] = value;
                 MagazineReplaced?.Invoke(this, new MagazineListHandlerEventArgs(Name, "Element replaced", index));
             }
-        }
+        }   
  
 
         public override string ToString()
