@@ -51,6 +51,7 @@
     <Compile Include="Classes\Article\Article.Randomization.cs" />
     <Compile Include="Classes\Edition\Edition.Core.cs" />
     <Compile Include="Classes\Edition\Edition.Comparison.cs" />
+    <Compile Include="Classes\Listener\Listener.cs" />
     <Compile Include="Others\Frequency.cs" />
     <Compile Include="Interfaces\IRateAndCopy.cs" />
     <Compile Include="Classes\Magazine\Magazine.Core.cs" />

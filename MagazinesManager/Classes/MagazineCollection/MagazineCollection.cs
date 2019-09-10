@@ -20,9 +20,9 @@ namespace MagazinesManager
             public string ChangeType { get; set; }
             public int NumberOfChangedElement { get; set; } 
 
-            public MagazineListHandlerEventArgs(string collectionName = "",
-                                                string changeType = "",
-                                                int numberOfChangedElement = -1)
+            public MagazineListHandlerEventArgs(string collectionName,
+                                                string changeType,
+                                                int numberOfChangedElement)
             {
                 CollectionName = collectionName;
                 ChangeType = changeType;

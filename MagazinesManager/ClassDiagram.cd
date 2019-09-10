@@ -10,7 +10,7 @@
   <Class Name="MagazinesManager.Article" Collapsed="true">
     <Position X="3.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAAAAAAAAAAAAAAEgAAAAAQAAAAIAAEAAAAAAAAAAAA=</HashCode>
+      <HashCode>QAAAAAAAAAAAAAAEgAAAAAQAIAAIAAEAAAABAAAAAAA=</HashCode>
       <FileName>Article.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -33,15 +33,27 @@
   <Class Name="MagazinesManager.Edition" Collapsed="true">
     <Position X="1.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAAAQAAAQEwAAAAEAABAAIAIAAAABAAAACAiA=</HashCode>
+      <HashCode>AAIAAAAAAAQAAAQEwAAAAEAAJAAIAIAAAABBAAACAiA=</HashCode>
       <FileName>Classes\Edition\Edition.Comparison.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="MagazinesManager.MagazineCollection">
     <Position X="1.75" Y="3" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="MagazinesManager.MagazineCollection.MagazineListHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Classes\MagazineCollection\MagazineCollection.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Class Name="MagazinesManager.MagazineCollection.MagazineListHandlerEventArgs" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Classes\MagazineCollection\MagazineCollection.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAEAAAEBIAAAAAEAAAIAAAABAAAAAAAAgAIAAAAAAA=</HashCode>
+      <HashCode>AAAEAAAEBIAAAAAECAAIAAQABAAAAAAAAgAIAAAAACA=</HashCode>
       <FileName>Classes\MagazineCollection\MagazineCollection.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -49,14 +61,14 @@
     <Position X="6.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAA=</HashCode>
-      <FileName>IRateAndCopy.cs</FileName>
+      <FileName>Interfaces\IRateAndCopy.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="MagazinesManager.Frequency" Collapsed="true">
     <Position X="4" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAgA=</HashCode>
-      <FileName>Frequency.cs</FileName>
+      <FileName>Others\Frequency.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />
