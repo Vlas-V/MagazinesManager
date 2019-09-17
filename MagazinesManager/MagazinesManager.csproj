@@ -56,6 +56,7 @@
     <Compile Include="Classes\Magazine\Magazine.Core.cs" />
     <Compile Include="Classes\Magazine\Magazine.Iteratrors.cs" />
     <Compile Include="Classes\MagazineCollection\MagazineCollection.cs" />
+    <Compile Include="Others\Update.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Classes\Person\Person.Randomization.cs" />
     <Compile Include="Program.cs" />

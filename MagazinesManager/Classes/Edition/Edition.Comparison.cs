@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,9 +8,8 @@ using System.Threading.Tasks;
 namespace MagazinesManager
 {
     // IComparable and IComparer implementations
-    public partial class Edition : IComparable, IComparer<Edition>
+    public partial class Edition : IComparable, IComparer<Edition>, INotifyPropertyChanged
     {
-    
         // This method implements IComparable interface to sort an array of Editions by name
         public int CompareTo(object obj)
         {

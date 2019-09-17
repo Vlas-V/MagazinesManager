@@ -1,21 +1,22 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Newtonsoft.Json;
 using System.Linq;
 using System.Text;
 
 namespace MagazinesManager
 {
-    public partial class Edition : IComparable, IComparer<Edition>
+    public partial class Edition : IComparable, IComparer<Edition>, INotifyPropertyChanged
     {
+
         protected string editionName;
         protected DateTime publicationDate;
         protected int circulation;
 
 
         // Randomization 
-
         private static List<string> randomNames;
         protected static Random r;
 
@@ -66,6 +67,7 @@ namespace MagazinesManager
             set
             {
                 publicationDate = value;
+                RaisePropertyChanged("PublicationDate");
             }
         }
 
@@ -81,6 +83,7 @@ namespace MagazinesManager
                 }
 
                 circulation = value;
+                RaisePropertyChanged("Circulation");
 
             }
         }
@@ -102,6 +105,14 @@ namespace MagazinesManager
         {
             return new Edition(this.EditionName, this.PublicationDate, this.Circulation);
         }
+
+        // INotifyPropertyChanged 
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void RaisePropertyChanged(string name)
+        {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
 
     }
 }
