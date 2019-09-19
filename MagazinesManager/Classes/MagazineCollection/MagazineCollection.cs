@@ -5,14 +5,31 @@ using System.Text;
 
 namespace MagazinesManager
 {
-    public class MagazineCollection
+    public class MagazineCollection<TKey>
     {
-        private List<Magazine> magazines = new List<Magazine>();
+        private List<Magazine> magazines;
+        private Dictionary<TKey, Magazine> magazinesDict;
+        public string Name { get; set; }
+
+
+        public MagazineCollection(string name = "", params Magazine[] mags)
+        {
+            Name = name;
+            magazines = new List<Magazine>();
+            magazinesDict = new Dictionary<TKey, Magazine>();
+        
+            // What if there is nothing in the params ? 
+            AddMagazines(mags);
+        }
 
         public List<Magazine> Magazines
         {
-            // Reference of value?
             get { return magazines; }
+        }
+
+        public Dictionary<TKey, Magazine> MagazinesDict
+        {
+            get { return magazinesDict; };
         }
 
 
@@ -29,6 +46,40 @@ namespace MagazinesManager
         {
             Magazines.AddRange(mags);
         }
+
+        public bool Replace(Magazine mold, Magazine mnew)
+        {
+            // ! Working with a private field here !
+
+            // Is it possible to find the old element via key here? 
+
+            foreach (Magazine m in MagazinesDict.Values)
+            {
+                if(m == mold)
+                {
+                    // Still need to get the key .... 
+                }
+            }
+
+
+            return false; 
+        }
+
+        public List<Magazine> WeeklyMagazines()
+        {
+            List<Magazine> weeklyMagazines = new List<Magazine>();
+
+            foreach (Magazine m in MagazinesDict.Values)
+            {
+                if (m.Frequency == Frequency.Weekly)
+                {
+                    weeklyMagazines.Add(m);
+                }
+            }
+
+            return weeklyMagazines;
+        }
+
 
         public override string ToString()
         {
@@ -64,7 +115,6 @@ namespace MagazinesManager
 
 
         // Methods for sorting
-
         public void SortByName()
         {
             Magazines.Sort();
